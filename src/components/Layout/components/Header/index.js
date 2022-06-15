@@ -5,6 +5,11 @@ import {
     faCircleXmark,
     faSpinner,
     faMagnifyingGlass,
+    faPlus,
+    faEllipsisV,
+    faEarthAsia,
+    faCircleQuestion,
+    faKeyboard,
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 
@@ -12,15 +17,33 @@ import styles from './Header.module.scss';
 import images from '../../../../assets/images';
 import { Wrapper as PopperWrapper } from '../../../Popper';
 import AccountItem from '../../../AccountItem';
+import Button from '../../../Button';
+import Menu from '../../../Popper/Menu';
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        title: 'English',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard shortcuts',
+    },
+];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([1, 2, 3]);
+            setSearchResult([]);
         }, 0);
     }, []);
 
@@ -65,7 +88,24 @@ function Header() {
                     </div>
                 </Tippy>
 
-                <div className={cx('actions')}></div>
+                <div className={cx('actions')}>
+                    <Button
+                        outlineBlack
+                        leftIcon={<FontAwesomeIcon icon={faPlus} />}
+                    >
+                        Upload
+                    </Button>
+                    <Button primary>Log In</Button>
+
+                    <Menu items={MENU_ITEMS}>
+                        <span className={cx('menu')}>
+                            <FontAwesomeIcon
+                                className={cx('menu-icon')}
+                                icon={faEllipsisV}
+                            />
+                        </span>
+                    </Menu>
+                </div>
             </div>
         </header>
     );

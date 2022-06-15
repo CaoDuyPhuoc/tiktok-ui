@@ -1,0 +1,98 @@
+.wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    min-width: 100px;
+    padding: 9px 16px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    user-select: none;
+
+    + .wrapper {
+        margin-left: 12px;
+    }
+
+    &.disable {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon + .title,
+.title + .icon {
+    margin-left: 8px;
+}
+
+.icon {
+    width: 24px;
+    display: inline-block;
+    text-align: center;
+}
+
+// Button Types
+.primary {
+    background-color: var(--primary);
+    color: var(--color-text-white);
+
+    &:hover {
+        background: linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.06),
+                rgba(0, 0, 0, 0.06)
+            ),
+            #fe2c55;
+    }
+}
+
+.outlineBlack {
+    min-width: 110px;
+    border-color: rgba(22, 24, 35, 0.12);
+    font-weight: 600;
+    color: #161823;
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.outlinePrimary {
+    color: var(--primary);
+    border-color: currentColor;
+
+    &:hover {
+        background-color: rgba(254, 44, 85, 0.06);
+    }
+}
+
+.rounded {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    color: rgba(22, 24, 35, 0.75);
+    font-size: 1.4rem;
+    min-width: 90px;
+    padding: 7px 8px;
+    border-radius: 999px;
+    border-color: rgba(22, 24, 35, 0.12);
+
+    &:hover {
+        border-color: rgba(22, 24, 35, 0.2);
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
+// Button Sizes
+.small {
+    min-width: 88px;
+    padding: 4px 16px;
+}
+
+.large {
+    min-width: 140px;
+    padding: 14px 16px;
+}
