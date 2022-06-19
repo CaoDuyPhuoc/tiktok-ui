@@ -10,6 +10,7 @@
     //Default Layout
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
+    --default-layout-horizontal-spacer: 24px;
 }
 
 * {
@@ -43,4 +44,21 @@ button,
 a[href] {
     color: var(--color-text);
     text-decoration: none;
+}
+
+//Tippy
+.tippy-box {
+    border-radius: 8px;
+    background-color: rgba(84, 84, 84, 0.92);
+    color: rgb(255, 255, 255);
+}
+
+.tippy-content {
+    padding: 8px;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+}
+
+.tippy-arrow {
+    color: rgba(84, 84, 84, 0.92);
 }
