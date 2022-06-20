@@ -2,11 +2,14 @@ import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import TippyHeadless from '@tippyjs/react/headless';
+
 import { Wrapper as PopperWrapper } from '../../../Popper';
 import AccountItem from '../../../AccountItem';
 import styles from './Search.module.scss';
 import { useEffect, useState, useRef } from 'react';
 import { SearchIcon } from '../../../Icons';
+import { useDebounce } from '../../../../hooks';
+import * as request from '../../../../utils/request';
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +18,8 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
+
+    const debounce = useDebounce(searchValue, 800);
 
     const inputRef = useRef();
 
@@ -29,27 +34,31 @@ function Search() {
     };
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounce.trim()) {
             setSearchResult([]);
             return;
         }
 
         setLoading(true);
 
-        fetch(
-            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                searchValue,
-            )}&type=less`,
-        )
-            .then((res) => res.json())
-            .then((res) => {
+        const fetchApi = async () => {
+            try {
+                const res = await request.get('users/search', {
+                    params: {
+                        q: debounce,
+                        type: 'less',
+                    },
+                });
+
                 setSearchResult(res.data);
                 setLoading(false);
-            })
-            .catch(() => {
+            } catch (error) {
                 setLoading(false);
-            });
-    }, [searchValue]);
+            }
+        };
+
+        fetchApi();
+    }, [debounce]);
 
     return (
         <TippyHeadless
@@ -61,7 +70,13 @@ function Search() {
                         <h4 className={cx('search-title')}>Accounts</h4>
                         {searchResult.map((result) => {
                             return (
-                                <AccountItem key={result.id} data={result} />
+                                <AccountItem
+                                    key={result.id}
+                                    data={result}
+                                    onClick={() => {
+                                        setShowResult(false);
+                                    }}
+                                />
                             );
                         })}
                     </PopperWrapper>
