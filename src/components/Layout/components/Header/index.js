@@ -42,6 +42,71 @@ const MENU_ITEMS = [
                     code: 'vi-VN',
                     title: 'Tiếng Việt',
                 },
+                {
+                    type: 'Language',
+                    code: 'en-US',
+                    title: 'Rusia',
+                },
+                {
+                    type: 'Language',
+                    code: 'vi-VN',
+                    title: 'China',
+                },
+                {
+                    type: 'Language',
+                    code: 'en-US',
+                    title: 'France',
+                },
+                {
+                    type: 'Language',
+                    code: 'vi-VN',
+                    title: 'Tiếng Việt 2',
+                },
+                {
+                    type: 'Language',
+                    code: 'en-US',
+                    title: 'English 2',
+                },
+                {
+                    type: 'Language',
+                    code: 'vi-VN',
+                    title: 'Rusia 2',
+                },
+                {
+                    type: 'Language',
+                    code: 'en-US',
+                    title: 'China 2',
+                },
+                {
+                    type: 'Language',
+                    code: 'vi-VN',
+                    title: 'France 2',
+                },
+                {
+                    type: 'Language',
+                    code: 'vi-VN',
+                    title: 'Tiếng Việt 3',
+                },
+                {
+                    type: 'Language',
+                    code: 'en-US',
+                    title: 'English 3',
+                },
+                {
+                    type: 'Language',
+                    code: 'vi-VN',
+                    title: 'Rusia 3',
+                },
+                {
+                    type: 'Language',
+                    code: 'en-US',
+                    title: 'China 3',
+                },
+                {
+                    type: 'Language',
+                    code: 'vi-VN',
+                    title: 'France 3',
+                },
             ],
         },
     },

@@ -58,7 +58,9 @@ function Menu({
                                 }}
                             />
                         )}
-                        {renderItems()}
+                        <div className={cx('menu-scrollbar')}>
+                            {renderItems()}
+                        </div>
                     </PopperWrapper>
                 </div>
             )}

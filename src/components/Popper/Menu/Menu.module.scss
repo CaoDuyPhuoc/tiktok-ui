@@ -24,11 +24,18 @@
     padding-bottom: 8px;
 }
 
+//Scrollbar
+.menu-scrollbar {
+    overflow-y: auto;
+    max-height: min((100vh - 96px) - 60px, 734px);
+}
+
 // Popper Header
 .header {
     position: relative;
     height: 50px;
     margin-top: -8px;
+    flex-shrink: 0;
 }
 
 .back-btn {
